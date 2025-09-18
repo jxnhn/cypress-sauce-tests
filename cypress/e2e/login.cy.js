@@ -3,6 +3,9 @@ describe('Login Tests', () => {
     cy.visit('/')
   })
 
+  /*TODO: Selector abstraído para Username, Password, Login Button e Error Message . Add cenário user bloqueado. 
+*/
+
 it('login with invalid username but valid password', () => {
     cy.get('[data-test="username"]').type('invalidUser')
     cy.get('[data-test="password"]').type('secret_sauce')
