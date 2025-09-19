@@ -4,14 +4,14 @@ describe('MarketCar', () => {
  
   })
 
-  /*TODO: Selector abstraído para Product Name, Add to Cart Button e Shopping Cart Link. Melhorar resiliencia do seletor de itens */
+  /*TODO: Selector abstraído para Product Name, Add to Cart Button e Shopping Cart Link. Melhorar resiliencia do seletor de itens. Criar comando de checkout */
 
   it('completes checkout successfully when an item is added to the cart', () => {
     // Adicionar item ao carrinho
     cy.get('[data-test="add-to-cart-sauce-labs-bike-light"]').click();
     cy.get('[data-test="shopping-cart-link"]').click();
 
-    //Iniciar checkout
+    //Iniciar checkout. Vai ser encapsulado num comando com uma fixture de usuário que compra essas coisas. 
     cy.get('[data-test="checkout"]').click();
     cy.url().should('include', '/checkout-step-one');
     cy.get('[data-test="firstName"]').type('John');
@@ -31,7 +31,7 @@ describe('MarketCar', () => {
     cy.get('[data-test="product-sort-container"]').select('Name (Z to A)');
     cy.get('.inventory_item')
     .first()
-    .should('contain', 'Test.allTheThings() T-Shirt (Red)')
+    .should('contain', 'Test.allTheThings() T-Shirt (Red)') 
     .within(() => {
       cy.get('button').click();
     });
