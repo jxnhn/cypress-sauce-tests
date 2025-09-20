@@ -6,7 +6,12 @@ export const Selectors = {
     menuButton : '#react-burger-menu-btn',
     logoutButton : '#logout_sidebar_link',
     shoppingCartButton: '[data-test="shopping-cart-link"]',
+    addBikeToCartButton: '[data-test="add-to-cart-sauce-labs-bike-light"]',
     finishButton: '[data-test="finish"]',
-    completeMessage: '[data-test="complete-header"]'
-    
+    completeMessage: '[data-test="complete-header"]',
+    firstName : '[data-test="firstName"]',
+    lastName : '[data-test="lastName"]',
+    postalCode : '[data-test="postalCode"]',
+    continueButton : '[data-test="continue"]',
+    filterButton : '[data-test="product-sort-container"]',
 }
