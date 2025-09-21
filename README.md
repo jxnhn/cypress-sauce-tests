@@ -33,8 +33,8 @@ Este projeto contém duas specs, uma que valida login com várias entradas e out
 
 1. Clone este repositório:
    ```sh
-   git clone https://github.com/seu-usuario/cypress-pacto-solucoes.git
-   cd cypress-pacto-solucoes
+   git clone https://github.com/seu-usuario/cypress-sauce-tests.git
+   cd cypress-sauce-tests
    ```
 
 2. Instale as dependências:
@@ -69,13 +69,22 @@ cypress run --spec "cypress/e2e/marketcar.cy.js"
 ```
 cypress-sauce-tests/
 ├── cypress/
-│   ├── e2e/
-│   │   ├── login.cy.js      # Testes de login
-│   │   └── marketcar.cy.js  # Testes de compras
-│   └── support/
-├── cypress.config.js         # Configuração do Cypress (baseUrl, timeouts, etc)
-├── package.json
-└── README.md
+│ ├── e2e/
+│ │ ├── login.cy.js # Spec de testes de login
+│ │ └── marketcar.cy.js # Spec de testes do fluxo de compras
+│ ├── fixtures/
+│ │ └── users.json # Dados de teste (usuários)
+│ ├── selectors/
+│ │ └── selectors.js # Seletores centralizados
+│ └── support/
+│ ├── commands.js # Comandos customizados (ex.: cy.executeCheckout)
+│ └── e2e.js # Configurações gerais de suporte para e2e
+├── .gitignore # Arquivo de exclusão do Git
+├── .nvrm # Controle de versão do Node (versão 22.15.0)
+├── cypress.config.js # Configuração do Cypress (baseUrl, timeouts, etc.)
+├── package-lock.json # Dependências travadas
+├── package.json # Dependências e scripts do projeto
+└── README.md # Documentação do projeto
 
 ```
 
