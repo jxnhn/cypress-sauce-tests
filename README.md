@@ -23,7 +23,7 @@ Este projeto contém duas specs, uma que valida login com várias entradas e out
 
 ## Pré-requisitos
 
-- [Node.js](https://nodejs.org/) (recomendado: versão 16 ou superior)
+- [Node.js 22.15.0](https://nodejs.org/) (versão exata utilizada no projeto) 
 - [npm](https://www.npmjs.com/) ou [yarn](https://yarnpkg.com/)
 - [Cypress](https://www.cypress.io/) (instalado como dependência do projeto)
 
