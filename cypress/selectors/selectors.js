@@ -1,0 +1,18 @@
+export const Selectors = {
+    usernameField: '[data-test="username"]',
+    passwordField : '[data-test="password"]',
+    loginButton : '[data-test="login-button"]',
+    errorMessage :  '[data-test="error"]',
+    menuButton : '#react-burger-menu-btn',
+    logoutButton : '#logout_sidebar_link',
+    shoppingCartButton: '[data-test="shopping-cart-link"]',
+    addBikeToCartButton: '[data-test="add-to-cart-sauce-labs-bike-light"]',
+    finishButton: '[data-test="finish"]',
+    completeMessage: '[data-test="complete-header"]',
+    firstName : '[data-test="firstName"]',
+    lastName : '[data-test="lastName"]',
+    postalCode : '[data-test="postalCode"]',
+    continueButton : '[data-test="continue"]',
+    checkoutButton : '[data-test="checkout"]',
+    filterButton : '[data-test="product-sort-container"]',
+}

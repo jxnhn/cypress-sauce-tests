@@ -1,27 +1,96 @@
+import { Selectors } from "../selectors/selectors"
+
 describe('MarketCar', () => {
   beforeEach(() => {
     cy.sauceLogin();
+
+ 
   })
 
-  it('completes checkout successfully when an item is added to the cart', () => {
-    // Adicionar item ao carrinho
-    cy.get('[data-test="add-to-cart-sauce-labs-bike-light"]').click();
-    cy.get('[data-test="shopping-cart-link"]').click();
+  it('execute checkout informing valid data', () => {
+    // Adicionar item ao carrinho e inicia o checkout
+    cy.get(Selectors.addBikeToCartButton).click();
+    cy.get(Selectors.shoppingCartButton).click();
+    cy.get(Selectors.checkoutButton).click();
 
-    //Iniciar checkout
-    cy.get('[data-test="checkout"]').click();
-    cy.url().should('include', '/checkout-step-one');
-    cy.get('[data-test="firstName"]').type('John');
-    cy.get('[data-test="lastName"]').type('Wick');
-    cy.get('[data-test="postalCode"]').type('12345');
-    cy.get('[data-test="continue"]').click();
-    cy.url().should('include', '/checkout-step-two');
-
-    //Confirmação da compra
-    cy.get('[data-test="finish"]').click();
-    cy.url().should('include', '/checkout-complete');
-    cy.get('[data-test="complete-header"]').should('be.visible').and('contain', 'Thank you for your order!');
+    cy.executeCheckout('checkoutUserWithValidData');
   })
 
+  it('execute checkout informing invalid data', () => {
+    // Adicionar item ao carrinho e inicia o checkout
+    cy.get(Selectors.addBikeToCartButton).click();
+    cy.get(Selectors.shoppingCartButton).click();
+    cy.get(Selectors.checkoutButton).click();
+
+    cy.executeCheckout('checkoutUserWithInvalidData');
+  })
+
+  it('reorder results by name from Z to A and checkout the first item', () => {
+
+    //Filtra os resultados e pega o primeiro item.
+    cy.get(Selectors.filterButton).select('Name (Z to A)');
+    cy.get('.inventory_item')
+    .first()
+    .should('contain', 'Test.allTheThings() T-Shirt (Red)') 
+    .within(() => {
+      cy.get('button').click();
+    });
+
+    cy.get(Selectors.shoppingCartButton).click();
+    cy.get(Selectors.checkoutButton).click();
+
+    cy.executeCheckout('checkoutUserWithValidData');
+  })
+
+  it('reorder results by name from A to Z and checkout the first item', () => {
+
+    //Filtra os resultados e pega o primeiro item.
+    cy.get(Selectors.filterButton).select('Name (A to Z)');
+    cy.get('.inventory_item')
+      .first()
+      .should('contain', 'Sauce Labs Backpack')
+      .within(() => {
+        cy.get('button').click();
+      });
+
+    cy.get(Selectors.shoppingCartButton).click();
+    cy.get(Selectors.checkoutButton).click();
+    
+    cy.executeCheckout('checkoutUserWithValidData');
+  })
+
+    it('reorder results by lower to higher price and checkout the first item', () => {
+
+    //Filtra os resultados e pega o primeiro item.
+    cy.get(Selectors.filterButton).select('Price (low to high)');
+    cy.get('.inventory_item')
+    .first()
+    .should('contain', 'Sauce Labs Onesie') 
+    .within(() => {
+      cy.get('button').click();
+    });
+
+    cy.get(Selectors.shoppingCartButton).click();
+    cy.get(Selectors.checkoutButton).click();
+
+    cy.executeCheckout('checkoutUserWithValidData');
+  })
+
+  it('reorder results by higher to lower price and checkout the first item', () => {
+
+    //Filtra os resultados e pega o primeiro item.
+    cy.get(Selectors.filterButton).select('Price (high to low)');
+    cy.get('.inventory_item')
+    .first()
+    .should('contain', 'Sauce Labs Fleece Jacket') 
+    .within(() => {
+      cy.get('button').click();
+    });
+
+    cy.get(Selectors.shoppingCartButton).click();
+    cy.get(Selectors.checkoutButton).click();
+
+    cy.executeCheckout('checkoutUserWithValidData');
+  })
 
 });

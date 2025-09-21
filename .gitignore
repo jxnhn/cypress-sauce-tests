@@ -1,0 +1,10 @@
+.cypress/videos/
+.cypress/screenshots/
+coverage/
+.env
+.DS_Store
+.vscode/
+.idea/
+.env.local
+.env.development.local
+node_modules
