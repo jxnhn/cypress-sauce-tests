@@ -7,7 +7,7 @@ Cypress.Commands.add('sauceLogin', (username = 'standard_user', password = 'secr
     cy.get(Selectors.usernameField).type(username);
     cy.get(Selectors.passwordField).type(password);
     cy.get(Selectors.loginButton).click();
-    cy.url().should('include', '/inventory'); // garante que o login foi concluído
+    cy.url().should('include', '/inventory'); 
   }, {
   });
 
