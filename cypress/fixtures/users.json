@@ -1,0 +1,18 @@
+{
+  "validUser": {
+    "name": "Valid User",
+    "username": "standard_user",
+    "password": "secret_sauce"
+  },
+  "checkoutUserWithValidData": {
+    "firstName": "Muhammad",
+    "lastName": "Ali",
+    "zipCode": "35049"
+  },
+
+  "checkoutUserWithInvalidData": {
+    "firstName": "Geralt",
+    "lastName": "of Rivia",
+    "zipCode": "INVALID ZIP CODE"
+  }
+}
