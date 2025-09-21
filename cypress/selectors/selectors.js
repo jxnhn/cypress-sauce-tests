@@ -13,5 +13,6 @@ export const Selectors = {
     lastName : '[data-test="lastName"]',
     postalCode : '[data-test="postalCode"]',
     continueButton : '[data-test="continue"]',
+    checkoutButton : '[data-test="checkout"]',
     filterButton : '[data-test="product-sort-container"]',
 }
