@@ -66,4 +66,38 @@ describe('MarketCar', () => {
     cy.executeCheckout('checkoutUserWithValidData');
   })
 
+    it('reorder results by lower to higher price and checkout the first item', () => {
+
+    //Filtra os resultados e pega o primeiro item.
+    cy.get(Selectors.filterButton).select('Price (low to high)');
+    cy.get('.inventory_item')
+    .first()
+    .should('contain', 'Sauce Labs Onesie') 
+    .within(() => {
+      cy.get('button').click();
+    });
+
+    cy.get(Selectors.shoppingCartButton).click();
+    cy.get(Selectors.checkoutButton).click();
+
+    cy.executeCheckout('checkoutUserWithValidData');
+  })
+
+  it('reorder results by higher to lower price and checkout the first item', () => {
+
+    //Filtra os resultados e pega o primeiro item.
+    cy.get(Selectors.filterButton).select('Price (high to low)');
+    cy.get('.inventory_item')
+    .first()
+    .should('contain', 'Sauce Labs Fleece Jacket') 
+    .within(() => {
+      cy.get('button').click();
+    });
+
+    cy.get(Selectors.shoppingCartButton).click();
+    cy.get(Selectors.checkoutButton).click();
+
+    cy.executeCheckout('checkoutUserWithValidData');
+  })
+
 });
